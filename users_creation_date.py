@@ -16,9 +16,8 @@ for userslist in response["Users"]:
     get_create_date = datetime.date(userslist['CreateDate'])
     current_day = datetime.today()
     expire_days = current_day.date()- get_create_date
-    out_user_list+=1
     if expire_days.days==1:
-    send_msg = sns.publish(
+            send_msg = sns.publish(
             TopicArn='arn:aws:sns:ap-south-1:988892460704:getting_password_age_user',
             Subject='IAM users creation date details',
             Message= str(userslist)
